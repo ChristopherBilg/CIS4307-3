@@ -19,6 +19,7 @@ public class SimpleChatClient {
     
     public static String server_hostname = "127.0.0.1";
     public static int server_port = 4446;
+    public static int receive_packet_size = 1024;
 
     /**
      * @param args the command line arguments
@@ -27,11 +28,13 @@ public class SimpleChatClient {
         // Constructor to create a datagram socket 
         DatagramSocket socket = new DatagramSocket(); 
         InetAddress address = InetAddress.getByName(server_hostname); 
-        int port = server_port; 
-        byte buf[] = { 12, 13 }; 
-        byte buf1[] = new byte[2]; 
-        DatagramPacket dp = new DatagramPacket(buf, 2, address, port); 
-        DatagramPacket dptorec = new DatagramPacket(buf1, 2); 
+        int port = server_port;
+        String stringtosend = "{\"header\":{\"username\":\"server\",\"uuid\":\"ae4e15ff-b589-4e85-a07c-594b16e4e645\",\"timestamp\":\"{\"0\":2,\"1\":0,\"2\":0}\",\"type\":\"message\"},\"body\":{\"content\":\"A1\"}}";
+        byte buf[] = stringtosend.getBytes();
+        //byte buf[] = { 12, 13 };
+        byte buf1[] = new byte[receive_packet_size]; 
+        DatagramPacket dp = new DatagramPacket(buf, stringtosend.length(), address, port); 
+        DatagramPacket dptorec = new DatagramPacket(buf1, receive_packet_size); 
           
         // connect() method 
         socket.connect(address, port); 
@@ -55,10 +58,12 @@ public class SimpleChatClient {
         // getLocalSocketAddress() method 
         System.out.println("Local socket address : " +  
                           socket.getLocalSocketAddress()); 
-  
+ 
+        socket.setSoTimeout(10000);
+        
         // send() method 
         socket.send(dp); 
-        System.out.println("...packet sent successfully...."); 
+        System.out.println("...packet sent successfully....");
   
         // receive() method 
         socket.receive(dptorec); 
@@ -72,10 +77,14 @@ public class SimpleChatClient {
         System.out.println("Local Address : " + socket.getLocalAddress()); 
   
         // setSOTimeout() method 
-        socket.setSoTimeout(50); 
+        socket.setSoTimeout(50);
   
         // getSOTimeout() method 
-        System.out.println("SO Timeout : " + socket.getSoTimeout()); 
+        System.out.println("SO Timeout : " + socket.getSoTimeout());
+        
+        // Convert packet that was received to a String
+        String message = new String(dptorec.getData(), dptorec.getOffset(), dptorec.getLength());
+        System.out.println(message);
     }
     
 }
