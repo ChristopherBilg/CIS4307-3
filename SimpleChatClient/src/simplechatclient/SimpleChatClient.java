@@ -27,9 +27,9 @@ public class SimpleChatClient {
     public static void main(String[] args) throws IOException {
         // Constructor to create a datagram socket 
         DatagramSocket socket = new DatagramSocket(); 
-        InetAddress address = InetAddress.getByName(server_hostname); 
+        InetAddress address = InetAddress.getByName(server_hostname);   
         int port = server_port;
-        String stringtosend = "{\"header\":{\"username\":\"server\",\"uuid\":\"ae4e15ff-b589-4e85-a07c-594b16e4e645\",\"timestamp\":\"{\"0\":2,\"1\":0,\"2\":0}\",\"type\":\"message\"},\"body\":{\"content\":\"A1\"}}";
+        String stringtosend = "{\"header\":{\"username\":\"Chris\",\"uuid\":\"ae4e15ff-b589-4e85-a07c-594b16e4e645\",\"timestamp\":\"{}\",\"type\":\"register\"},\"body\":{}}";
         byte buf[] = stringtosend.getBytes();
         //byte buf[] = { 12, 13 };
         byte buf1[] = new byte[receive_packet_size]; 
