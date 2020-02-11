@@ -40,7 +40,7 @@
         android:ems="10"
         android:hint="Hostname"
         android:inputType="textPersonName"
-        android:text="127.0.1.1"
+        android:text="10.0.2.2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
