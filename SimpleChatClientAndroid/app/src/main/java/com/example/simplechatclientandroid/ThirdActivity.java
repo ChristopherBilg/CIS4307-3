@@ -7,21 +7,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SecondActivity extends AppCompatActivity {
+public class ThirdActivity extends AppCompatActivity {
 
     Button backButton;
+    Button retrieveChatLogButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_third);
 
-        // Initialize the back button
-        backButton = findViewById(R.id.SecondActivityBackButton);
+        // initialize the back button (also the deregister button)
+        backButton = findViewById(R.id.thirdActivityBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMainActivity();
+            }
+        });
+
+        // initialize the chat log retrieval button
+        retrieveChatLogButton = findViewById(R.id.retrieveChatLogButton);
+        retrieveChatLogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // retrieve chat logs here
             }
         });
     }
