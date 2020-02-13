@@ -1,8 +1,13 @@
 package ch.ethz.inf.vs.a3.clock;
 
+import androidx.annotation.NonNull;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.Vector;
 
 public class VectorClock implements Clock {
 
@@ -14,7 +19,19 @@ public class VectorClock implements Clock {
 
     @Override
     public void update(Clock other) {
+        VectorClock clock = (VectorClock) other;
+        for (int pid : this.vector.keySet())
+            if (clock.getClock().containsKey(pid))
+                if (this.vector.get(pid) < clock.getClock().get(pid))
+                    this.vector.put(pid, clock.getClock().get(pid));
 
+        for (int pid : clock.getClock().keySet())
+            if (this.vector.containsKey(pid)) {
+                if (this.vector.get(pid) < clock.getClock().get(pid))
+                    this.vector.put(pid, clock.getClock().get(pid));
+            } else {
+                this.vector.put(pid, clock.getClock().get(pid));
+            }
     }
 
     @Override
@@ -25,6 +42,30 @@ public class VectorClock implements Clock {
 
     public Map<Integer, Integer> getClock() {
         return this.vector;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+
+        str.append('{');
+
+        for (int key : this.vector.keySet()) {
+            str.append("\"");
+            str.append(key);
+            str.append("\"");
+            str.append(":");
+            str.append(this.vector.get(key));
+            str.append(",");
+        }
+
+        if (!this.vector.isEmpty())
+            str.deleteCharAt(str.length() - 1);
+
+        str.append('}');
+
+        return str.toString();
     }
 
     @Override
@@ -40,7 +81,12 @@ public class VectorClock implements Clock {
 
     @Override
     public void setClockFromString(String clock) {
+        if (clock == "{}") {
+            this.vector = new HashMap<Integer, Integer>();
+            return;
+        }
 
+        // Add conversion of non-empty strings here
     }
 
     public int getTime(int pid) {
