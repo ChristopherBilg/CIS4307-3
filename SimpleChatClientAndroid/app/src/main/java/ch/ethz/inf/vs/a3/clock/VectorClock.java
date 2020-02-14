@@ -76,7 +76,17 @@ public class VectorClock implements Clock {
 
     @Override
     public boolean happenedBefore(Clock other) {
-        return false;
+        VectorClock clock = (VectorClock) other;
+
+        for (int key : this.vector.keySet()) {
+            if (clock.getClock().containsKey(key))
+                if (this.vector.get(key) <= clock.getClock().get(key))
+                    continue;
+                else
+                    return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -86,7 +96,39 @@ public class VectorClock implements Clock {
             return;
         }
 
-        // Add conversion of non-empty strings here
+        JSONObject json;
+        try {
+            json = new JSONObject(clock);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Map<Integer, Integer> newVector = new HashMap<Integer, Integer>();
+        Iterator<String> iter = json.keys();
+        while(iter.hasNext()) {
+            String key = iter.next();
+            int keyInt;
+            int value;
+            try {
+                value = json.getInt(key);
+            } catch (JSONException e) {
+//                e.printStackTrace();
+                return;
+            } catch (NumberFormatException e) {
+//                e.printStackTrace();
+                return;
+            }
+            try {
+                keyInt = Integer.parseInt(key);
+            } catch (NumberFormatException e) {
+//                e.printStackTrace();
+                return;
+            }
+            newVector.put(keyInt, value);
+        }
+
+        this.vector = newVector;
     }
 
     public int getTime(int pid) {
