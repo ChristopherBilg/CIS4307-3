@@ -87,7 +87,7 @@ public class ThirdActivity extends AppCompatActivity {
         TextView allMessages = (TextView) findViewById(R.id.chatLogTextView);
         String messages = allMessages.getText().toString();
 
-        if (messages.startsWith("Ordered Chat Logs"))
+        if (messages.startsWith("Ordered Chat Logs") || messages.startsWith("No chat logs have been found!"))
             return;
 
         if (messages == null || messages == "") {
