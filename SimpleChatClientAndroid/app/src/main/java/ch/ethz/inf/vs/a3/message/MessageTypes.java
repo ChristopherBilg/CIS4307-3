@@ -1,4 +1,4 @@
-package ch.ethz.inf.vs.a3.messsage;
+package ch.ethz.inf.vs.a3.message;
 
 public class MessageTypes {
 

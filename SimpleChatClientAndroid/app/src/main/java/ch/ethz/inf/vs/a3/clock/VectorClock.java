@@ -106,7 +106,7 @@ public class VectorClock implements Clock {
 
         Map<Integer, Integer> newVector = new HashMap<Integer, Integer>();
         Iterator<String> iter = json.keys();
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
             String key = iter.next();
             int keyInt;
             int value;

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="32dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="127dp"
         android:layout_marginEnd="127dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="16dp"
         android:text="Retrieve Chat Log"
         app:layout_constraintBottom_toTopOf="@+id/thirdActivityBackButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,9 +48,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginEnd="177dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="8dp"
         android:text="ERROR"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/chatLogOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="16dp"
+        android:text="Order Chat Logs"
+        app:layout_constraintBottom_toTopOf="@+id/retrieveChatLogButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
