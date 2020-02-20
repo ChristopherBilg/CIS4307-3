@@ -14,34 +14,34 @@ The design of the application is primarily inspired by the requirements given to
 8. You can now view the ordered messages, and click on the "BACK" button to deregister from the server.
 
 ### MainActivity
-x
+The main activity is the first activity that is shown when the android application is first opened. This activity includes a button to view the "Settings" activity, a button to "Join" or register with the chat server, and three text input fields. The three text input fields are for the three following features; username, server connection hostname, and server connection port.
 
 ### SecondActivity
-x
+This activity is the "Settings" activity. Currently this activity does not change the actual hostname and port that the user will use to connection to the chat server; however, adding in this functionality is possible. There is a "Back" button to return to the previous activity, as well as two text input fields for server connection hostname and server connection port respectively.
 
 ### ThirdActivity
-x
+This is the primary activity for retrieving chat logs, and for displaying chat logs. There are three buttons on this activity which correspond to the three functions respectively; "ORDER CHAT LOGS" will order the chat logs if they have already been retrieved otherwise it will display an error message, "RETRIEVE CHAT LOG" will asynchronously retrieve the chat messages from the chat server (chat_server.jar) and will display them on the screen, and "BACK" will deregister the current user and will return to the previous activity.
 
-### LamportClock.class
-x
+### LamportClock
+This class adheres to all of the given unit tests (100% pass rate) and contains all of the methods that the unit tests require.
 
-### VectorClock.class
-x
+### VectorClock
+This class adheres to all of the given unit tests (100% pass rate) and contains all of the methods that the unit tests require as well as additional functionality for ease of use in the android application.
 
 ### LamportClockTests
-x
+This class is the given unit test file for verifying that my LamportClock.class file passes with the desired functionality.
 
 ### VectorClockTests
-x
+This class is the given unit test file for verifying that my VectorClock.class file passes with the desired functionality.
 
 ### AsyncRegister
-x
+This file is used for asynchronously (on a separate thread) registering the user with a given username and with the given server hostname and server port.
 
 ### AsyncDeregister
-x
+This file is used for asynchronously (on a separate thread) deregistering the user with a given username from the currently connected server connection. 
 
 ### AsyncRetrieveChatLog
-x
+This file is used for asynchronously (again, on a separate thread) retrieving the chat logs from the currently connected to server connection.
 
 ## Existing Limitations
 There are numerous existing limitations that I know of in the android application. These limitations, given enough time and experience in Android Studio, can be solved. These limitations incldue, but are not limited to; clicking on the android built-in back button will not deregister the currently registered user, turn the phone to any other orientation will cause errors with the current UDP connection to the server (don't turn the phone sideways), the activity named "SecondActivity" currently does not support changing the hostname and port (meaning that you must choose hostname and port from the main activity).
