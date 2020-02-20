@@ -13,5 +13,35 @@ The design of the application is primarily inspired by the requirements given to
 7. Now that the chat logs have been retrieved, you can choose the "ORDER CHAT LOGS" button. This button will take those existing chat messages and it will sort them, find any detected collisions, and display them in a more eye-pleasing manner.
 8. You can now view the ordered messages, and click on the "BACK" button to deregister from the server.
 
+### MainActivity
+x
+
+### SecondActivity
+x
+
+### ThirdActivity
+x
+
+### LamportClock.class
+x
+
+### VectorClock.class
+x
+
+### LamportClockTests
+x
+
+### VectorClockTests
+x
+
+### AsyncRegister
+x
+
+### AsyncDeregister
+x
+
+### AsyncRetrieveChatLog
+x
+
 ## Existing Limitations
-There are numerous existing limitations that I know of in the android application. These limitations, given enough time and experience in Android Studio, can be solved.
+There are numerous existing limitations that I know of in the android application. These limitations, given enough time and experience in Android Studio, can be solved. These limitations incldue, but are not limited to; clicking on the android built-in back button will not deregister the currently registered user, turn the phone to any other orientation will cause errors with the current UDP connection to the server (don't turn the phone sideways), the activity named "SecondActivity" currently does not support changing the hostname and port (meaning that you must choose hostname and port from the main activity).
