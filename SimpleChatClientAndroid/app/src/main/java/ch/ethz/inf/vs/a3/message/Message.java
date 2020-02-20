@@ -75,6 +75,10 @@ public class Message {
         return this.bodyContents;
     }
 
+    public void setBodyContents(String contents) {
+        this.bodyContents = contents;
+    }
+
     public String getTimestampContents() {
         return this.timestampContents;
     }

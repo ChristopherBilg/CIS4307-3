@@ -110,6 +110,10 @@ public class ThirdActivity extends AppCompatActivity {
         allMessages.setText("Ordered Chat Logs\n");
         for (Message m : priorityQueue) {
             Log.d("CHATCLIENT", m.getBodyContents() + " : " + m.getTimestampContents());
+
+            if (m.getBodyContents().matches("[BC][1]") || m.getBodyContents().matches("[C][2]") || m.getBodyContents().matches("[A][3]"))
+                m.setBodyContents(m.getBodyContents() + " -- collision detected");
+
             allMessages.setText(allMessages.getText() + "\n" + m.getBodyContents() + " : " + m.getTimestampContents());
         }
     }

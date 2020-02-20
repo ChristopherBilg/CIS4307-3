@@ -22,19 +22,21 @@ public class MessageComparator implements Comparator<Message> {
         c1.setClockFromString(m1);
         c2.setClockFromString(m2);
 
-//        if (c1.getClock() == c2.getClock())
-//            return 0;
-//        else if (c1.happenedBefore(c2))
-//            return -1;
-//        else
-//            return 1;
-
-        if (c1.happenedBefore(c2))
+        if (c1.getClock() == c2.getClock())
+            return 0;
+        else if (c1.happenedBefore(c2))
             return -1;
         else if (c2.happenedBefore(c1))
             return 1;
         else
-            return 0;
+            throw new UnsupportedOperationException("something went wrong comparing the clocks");
+
+//        if (c1.happenedBefore(c2))
+//            return -1;
+//        else if (c2.happenedBefore(c1))
+//            return 1;
+//        else
+//            return 0;
     }
 
 }
